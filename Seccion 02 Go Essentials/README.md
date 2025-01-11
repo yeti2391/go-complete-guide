@@ -1,0 +1,2 @@
+En este ejercicio se debe crear una "calculadora" en al cual el usuario debe ingresar un monto a invertir, ganancias esperadas, y en cuantos años. 
+Luego de eso el programa debe calcular y mostrar las ganancias esperadas, y las ganancias reales en las cuales se toma en cuenta una inflación constante.
