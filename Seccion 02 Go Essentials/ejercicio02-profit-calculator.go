@@ -18,8 +18,7 @@ func main(){
 	fmt.Printf("Las ganancias antes de impuestos (EBT) es de: %.2f\n", ebt)
 
 	//calculo de ganancias después de los ingresos
-	impuestos := ebt * (tax_rate/100)
-	profit := ebt - impuestos
+	profit := ebt * (1 - tax_rate / 100)
 	fmt.Printf("Después de los impuestos las ganancias son: %.2f\n",profit)
 
 	//calculo de ratio
