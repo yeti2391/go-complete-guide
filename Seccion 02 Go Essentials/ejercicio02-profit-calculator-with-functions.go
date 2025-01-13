@@ -6,21 +6,18 @@ import "fmt"
 
 func main(){
 	// datos a solicitar al usuario
-	fmt.Print("Ingrese los ingresos: ")
-	revenue := obtenerDatos() //revisar
-	
-	fmt.Print("Ingrese los costos: ")
-	expenses := obtenerDatos()
-	
-	fmt.Print("Ingrese los impuestos: ")
-	tax_rate := obtenerDatos()
+	revenue := obtenerDatos("Ingresos: ") 
+	expenses := obtenerDatos("Gastos: ")
+	tax_rate := obtenerDatos("Impuestos: ")
 
 	calculando(revenue, expenses, tax_rate) 
 }
  
 //se crea una única función para pedir input del usuario
-func obtenerDatos() float64{
+func obtenerDatos(infoText string) float64{
 	var userInput float64
+
+	fmt.Print(infoText)
 	fmt.Scan(&userInput)
 	return userInput
  }
