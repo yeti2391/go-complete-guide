@@ -41,9 +41,12 @@ func main(){
 		if withdrawAmount <= accountBalance && withdrawAmount >= 0{
 			accountBalance -= withdrawAmount
 			fmt.Println("Balance actualizado! Tu cuenta actualmente tiene: ", accountBalance)
+		} else if withdrawAmount < 0{ 
+			fmt.Println("Valor de extracción no valido")
 		} else {
-			fmt.Println("No tiene suficiente saldo para la extracción!")
-		}
+				fmt.Println("No tiene suficiente saldo para la extracción!")
+		}	
+
 	} else if choice == 4{
 		fmt.Print("Hasta la proxima")
 	} else {
