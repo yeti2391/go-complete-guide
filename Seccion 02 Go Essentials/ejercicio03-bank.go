@@ -29,6 +29,7 @@ func main(){
 			fmt.Println("Balance actualizado! Tu cuenta actual tiene: ", accountBalance)
 		} else {
 			fmt.Println("Valor del deposito no valido")
+			return
 		}
 		
 	} else if choice == 3 {
