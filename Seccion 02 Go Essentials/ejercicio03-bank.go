@@ -38,7 +38,7 @@ func main(){
 		fmt.Scan(&withdrawAmount)
 
 		//si hay saldo suficiente, se realiza la extración y se muestra el nuevo saldo de accountBalance
-		if withdrawAmount <= accountBalance{
+		if withdrawAmount <= accountBalance && withdrawAmount >= 0{
 			accountBalance -= withdrawAmount
 			fmt.Println("Balance actualizado! Tu cuenta actualmente tiene: ", accountBalance)
 		} else {
