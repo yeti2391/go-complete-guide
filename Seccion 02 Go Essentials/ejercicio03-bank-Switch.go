@@ -20,7 +20,7 @@ func main(){
 	switch choice {
 	case 1:
 		fmt.Println("Your balance is", accountBalance)
-		continue
+		
 	case 2:
 		fmt.Print("How much do you want to deposit: ")
 		var depositAmount float64
@@ -30,10 +30,10 @@ func main(){
 		if depositAmount >= 0{
 			accountBalance += depositAmount
 			fmt.Println("Balance actualizado! Tu cuenta actual tiene: ", accountBalance)
-			continue
+			
 		} else {
 			fmt.Println("Valor del deposito no valido")
-			continue
+			
 		}
 	case 3:
 		fmt.Print("How much do you want to withdraw: ")
@@ -44,20 +44,20 @@ func main(){
 		if withdrawAmount <= accountBalance && withdrawAmount >= 0{
 			accountBalance -= withdrawAmount
 			fmt.Println("Balance actualizado! Tu cuenta actualmente tiene: ", accountBalance)
-			continue
+			
 		} else if withdrawAmount < 0{ 
 			fmt.Println("Valor de extracción no valido")
-			continue
+			
 		} else {
 				fmt.Println("No tiene suficiente saldo para la extracción!")
-				continue
+				
 		}	
 	case 4:
 		fmt.Printf("Hasta la proxima \n")
 		return
 	default:
 		fmt.Println("Opcion no válida, intenta nuevamente")
-		continue
+		
 	}
 }
 
