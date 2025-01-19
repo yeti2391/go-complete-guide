@@ -4,20 +4,31 @@ import (
 	"fmt"
 	"os"
 	"strconv"
+	"errors"
 )
 const accountBalanceFile = "balance.txt"
 
-func getBalanceFromFile() float64 {
+func getBalanceFromFile() (float64, error) {
 	//se lee el archivo balance.txt y se almacena una colección de bytes ([]bytes) en la variable balanceText
-	data, _ := os.ReadFile(accountBalanceFile)
+	data, err := os.ReadFile(accountBalanceFile)
+	// si queremos manejar el error:
+	if err != nil {
+		return 1000, errors.New("No se pudo leer el archivo balance.txt")
+	} // lo que decimos que si hay un error (por ejemplo no existe el archivo balance.txt), el saldo será de 1000, y de no haber entonces err=nil y se sigue con el código
+
 	//como os.ReadFile lo que lee es una colección de bytes lo que se hace es convertirlo a string
 	balanceText := string(data)
 	//y despues se convierte el string a float64
 	//la función strconv.ParseFloat recibe dos parametros, el primero es el string que se quiere convertir y el segundo es el bitSize
-	//y devuelve dos valores, el primero es el valor convertido y el segundo es un error que como no estamos interesados en su manejo lo ignoramos con _
-	balance, _ := strconv.ParseFloat(balanceText, 64)
+	//y devuelve dos valores, el primero es el valor convertido y el segundo es un error que si no estamos interesados en su manejo lo ignoramos con _
+	balance, err := strconv.ParseFloat(balanceText, 64)
+	if err != nil {
+		return 1000, errors.New("No se pudo convertir el saldo a un número")
+	}
 
-	return balance
+	return balance, nil 
+	//este ultimo return sería el caso donde estuviera todo ok, como ahora la función devuelve dos valores 
+	//se indica que devuelva el balance y nil, que es un valor nulo que indica que no hay error
 
 
 }
