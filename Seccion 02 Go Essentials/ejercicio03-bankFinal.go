@@ -29,8 +29,6 @@ func getBalanceFromFile() (float64, error) {
 	return balance, nil 
 	//este ultimo return sería el caso donde estuviera todo ok, como ahora la función devuelve dos valores 
 	//se indica que devuelva el balance y nil, que es un valor nulo que indica que no hay error
-
-
 }
 
 func writeBalanceToFile(balance float64) {
@@ -45,7 +43,13 @@ func writeBalanceToFile(balance float64) {
 }
 
 func main(){
-	var accountBalance = getBalanceFromFile() 
+	var accountBalance, err = getBalanceFromFile() 
+	if err != nil {
+		fmt.Println("ERROR", err)
+		fmt.Println("---------------")		
+		return
+	}
+
 	var choice int
 
 
