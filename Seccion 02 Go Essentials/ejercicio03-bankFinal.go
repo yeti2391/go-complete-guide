@@ -1,8 +1,25 @@
 package main
 
-import {
+import (
 	"fmt"
 	"os"
+	"strconv"
+)
+const accountBalanceFile = "balance.txt"
+
+func getBalanceFromFile() float64 {
+	//se lee el archivo balance.txt y se almacena una colección de bytes ([]bytes) en la variable balanceText
+	data, _ := os.ReadFile(accountBalanceFile)
+	//como os.ReadFile lo que lee es una colección de bytes lo que se hace es convertirlo a string
+	balanceText := string(data)
+	//y despues se convierte el string a float64
+	//la función strconv.ParseFloat recibe dos parametros, el primero es el string que se quiere convertir y el segundo es el bitSize
+	//y devuelve dos valores, el primero es el valor convertido y el segundo es un error que como no estamos interesados en su manejo lo ignoramos con _
+	balance, _ := strconv.ParseFloat(balanceText, 64)
+
+	return balance
+
+
 }
 
 func writeBalanceToFile(balance float64) {
@@ -10,15 +27,16 @@ func writeBalanceToFile(balance float64) {
 	balanceText := fmt.Sprint(balance)
 	//a continuación usamos la función WriteFile de la librería os para escribir el archivo balance.txt
 	//el primer parametro es el nombre del archivo, el segundo es el contenido del archivo y el tercero es el permiso
-	os.WriteFile("balance.txt", []byte(balanceText), 0644)
+	os.WriteFile(accountBalanceFile, []byte(balanceText), 0644)
 	// 0644 es un permiso de lectura y escritura, lo que significa que el archivo puede ser leído y escrito por el propietario,
 	// pero solo leído por otros usuarios.
 
 }
 
 func main(){
+	var accountBalance = getBalanceFromFile() 
 	var choice int
-	var accountBalance float64 = 1000
+
 
 	fmt.Println("Welcome to Go Bank!")
 	for{
